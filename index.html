@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edital Formatator</title>
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="page-header">
+					<h1>Edital Formatator</h1>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<!-- <div class="panel panel-primary">
+					<div class="panel-heading">Conteúdo Não Formatado</div>
+					<div class="panel-body"> -->
+				<div class="form-group">
+					<label for="conteudonaoformatado">Conteúdo Não Formatado:</label>
+					<textarea id="conteudonaoformatado" class="form-control" rows="10"></textarea>
+				</div>
+				<!-- </div>
+				</div> -->
+			</div>
+			<div class="col-xs-12 text-center">
+				<input class="btn btn-default" type="button" value="Formatar"
+					onclick="format()" />
+			</div>
+			<div id="conteudoformatadodiv" class="hidden">
+				<div class="col-xs-12">
+					<!-- <div class="form-group"> -->
+						<label for="conteudoformatado">Conteúdo Formatado:</label>
+						<!-- <textarea id="conteudoformatado" class="form-control" rows="3"></textarea> -->
+						<!-- <div class="panel panel-default">
+							<div id="conteudoformatado" class="panel-body"></div>
+						</div> -->
+						<pre class="snippet">
+							<button class="btn" data-clipboard-snippet
+								aria-label="Copy to clipboard" data-copied-hint="Copied!"
+								data-clipboard-target="#conteudoformatado">
+								<img class="clippy" width="13" src="images/clippy.svg"
+									alt="Copy to clipboard">
+							</button>
+							<code id="conteudoformatado" class="html hljs xml"></code>
+						</pre>
+					<!-- </div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/clipboard.min.js"></script>
+<script src="js/index.js"></script>
+<!-- <script type="text/javascript">
+	$(document).ready(function() {
+		init();
+	});
+</script> -->
+</html>
