@@ -1,2 +1,3 @@
 # formatator
-marcelohenrique.github.io/formatator
+
+http://marcelohenrique.github.io/formatator/
