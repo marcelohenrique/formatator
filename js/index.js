@@ -15,22 +15,51 @@ function initClipboard() {
 var clipboard = initClipboard();
 
 function format() {
-	var conteudonaoformatado = $('#conteudonaoformatado');
-	var conteudoformatado = $('#conteudoformatado');
+	var conteudoNaoFormatado = $('#conteudonaoformatado');
+	var conteudoFormatado = $('#conteudoformatado');
 
-	var conteudo = conteudonaoformatado.val();
+	var conteudoEmFormatacao = conteudoNaoFormatado.val();
 
-	conteudo = conteudo.replace(/\s\s/g, ' ');
-	conteudo = conteudo.replace(/(\.)\s/g, '$1<br />');
-	conteudo = conteudo.replace(/([a-zA-Z\u00C0-\u00FF ]+:)\s(\d)/gi,
-			'</p><p class="form-control-static"><strong>$1</strong><br />$2');
-	conteudo = '<p class="hidden">' + conteudo + '</p>';
+	conteudoEmFormatacao = linearizar(conteudoEmFormatacao);
+	conteudoEmFormatacao = removeEspacosDuplos(conteudoEmFormatacao);
+	conteudoEmFormatacao = quebraLinha(conteudoEmFormatacao);
+	conteudoEmFormatacao = formataTitulo(conteudoEmFormatacao);
+	conteudoEmFormatacao = '<p>' + conteudoEmFormatacao + '</p>';
 
-	conteudoformatado.html(conteudo);
+	conteudoFormatado.html(conteudoEmFormatacao);
 
 	var conteudoformatadodiv = $('#conteudoformatadodiv');
 	conteudoformatadodiv.removeClass('hidden');
 
 	clipboard.destroy();
 	clipboard = initClipboard();
+}
+
+function linearizar(conteudo) {
+	return conteudo.replace(/\n/g, ' ');
+}
+
+function removeEspacosDuplos(conteudo) {
+	return conteudo.replace(/\s\s/g, ' ');
+}
+
+function quebraLinha(conteudo) {
+	return conteudo.replace(/(\.)\s/g, '$1<br />');
+}
+
+function formataTitulo(conteudo) {
+	var regex = /(.+?:)\s(.*?\.<br \/>)([A-Z])/g;
+
+	var result;
+	var conteudoRetorno = '';
+	var resto;
+
+	while ((result = regex.exec(conteudo)) !== null) {
+		conteudoRetorno += '</p><p class="form-control-static"><strong>'
+				+ (resto !== null ? resto : '') + result[1] + '</strong><br />'
+				+ result[2];
+		resto = result[3];
+	}
+
+	return conteudoRetorno;
 }
